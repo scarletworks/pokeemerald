@@ -10,6 +10,7 @@
 #include "battle_tv.h"
 #include "bg.h"
 #include "data.h"
+#include "event_data.h"
 #include "item.h"
 #include "item_menu.h"
 #include "link.h"
@@ -1162,10 +1163,29 @@ static void Task_GiveExpToMon(u8 taskId)
         struct Pokemon *mon = &gPlayerParty[monId];
         u16 species = GetMonData(mon, MON_DATA_SPECIES);
         u8 level = GetMonData(mon, MON_DATA_LEVEL);
+        u8 levelCap;
         u32 currExp = GetMonData(mon, MON_DATA_EXP);
         u32 nextLvlExp = gExperienceTables[gSpeciesInfo[species].growthRate][level + 1];
 
-        if (currExp + gainedExp >= nextLvlExp)
+        if (FlagGet(FLAG_BADGE08_GET))
+                levelCap = 58;
+            else if (FlagGet(FLAG_BADGE07_GET))
+                levelCap = 46;
+            else if (FlagGet(FLAG_BADGE06_GET))
+                levelCap = 42;
+            else if (FlagGet(FLAG_BADGE05_GET))
+                levelCap = 33;
+            else if (FlagGet(FLAG_BADGE04_GET))
+                levelCap = 31;
+            else if (FlagGet(FLAG_BADGE03_GET))
+                levelCap = 29;
+            else if (FlagGet(FLAG_BADGE02_GET))
+                levelCap = 24;
+            else if (FlagGet(FLAG_BADGE01_GET))
+                levelCap = 19;
+            else levelCap = 15;
+
+        if (currExp + gainedExp >= nextLvlExp && level < levelCap)
         {
             u8 savedActiveBattler;
 
@@ -1234,6 +1254,7 @@ static void Task_GiveExpWithExpBar(u8 taskId)
         if (newExpPoints == -1) // The bar has been filled with given exp points.
         {
             u8 level;
+            u8 levelCap;
             s32 currExp;
             u16 species;
             s32 expOnNextLvl;
@@ -1244,7 +1265,25 @@ static void Task_GiveExpWithExpBar(u8 taskId)
             species = GetMonData(&gPlayerParty[monId], MON_DATA_SPECIES);
             expOnNextLvl = gExperienceTables[gSpeciesInfo[species].growthRate][level + 1];
 
-            if (currExp + gainedExp >= expOnNextLvl)
+            if (FlagGet(FLAG_BADGE08_GET))
+                levelCap = 58;
+            else if (FlagGet(FLAG_BADGE07_GET))
+                levelCap = 46;
+            else if (FlagGet(FLAG_BADGE06_GET))
+                levelCap = 42;
+            else if (FlagGet(FLAG_BADGE05_GET))
+                levelCap = 33;
+            else if (FlagGet(FLAG_BADGE04_GET))
+                levelCap = 31;
+            else if (FlagGet(FLAG_BADGE03_GET))
+                levelCap = 29;
+            else if (FlagGet(FLAG_BADGE02_GET))
+                levelCap = 24;
+            else if (FlagGet(FLAG_BADGE01_GET))
+                levelCap = 19;
+            else levelCap = 15;
+
+            if (currExp + gainedExp >= expOnNextLvl && level < levelCap)
             {
                 u8 savedActiveBattler;
 

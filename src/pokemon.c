@@ -2907,8 +2907,27 @@ u8 GetLevelFromMonExp(struct Pokemon *mon)
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     u32 exp = GetMonData(mon, MON_DATA_EXP, NULL);
     s32 level = 1;
+    s32 levelCap;
 
-    while (level <= MAX_LEVEL && gExperienceTables[gSpeciesInfo[species].growthRate][level] <= exp)
+    if (FlagGet(FLAG_BADGE08_GET))
+        levelCap = 58;
+    else if (FlagGet(FLAG_BADGE07_GET))
+        levelCap = 46;
+    else if (FlagGet(FLAG_BADGE06_GET))
+        levelCap = 42;
+    else if (FlagGet(FLAG_BADGE05_GET))
+        levelCap = 33;
+    else if (FlagGet(FLAG_BADGE04_GET))
+        levelCap = 31;
+    else if (FlagGet(FLAG_BADGE03_GET))
+        levelCap = 29;
+    else if (FlagGet(FLAG_BADGE02_GET))
+        levelCap = 24;
+    else if (FlagGet(FLAG_BADGE01_GET))
+        levelCap = 19;
+    else levelCap = 15;
+
+    while (level <= MAX_LEVEL && gExperienceTables[gSpeciesInfo[species].growthRate][level] <= exp && level <= levelCap)
         level++;
 
     return level - 1;
@@ -2919,8 +2938,27 @@ u8 GetLevelFromBoxMonExp(struct BoxPokemon *boxMon)
     u16 species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
     u32 exp = GetBoxMonData(boxMon, MON_DATA_EXP, NULL);
     s32 level = 1;
+    s32 levelCap;
 
-    while (level <= MAX_LEVEL && gExperienceTables[gSpeciesInfo[species].growthRate][level] <= exp)
+    if (FlagGet(FLAG_BADGE08_GET))
+        levelCap = 58;
+    else if (FlagGet(FLAG_BADGE07_GET))
+        levelCap = 46;
+    else if (FlagGet(FLAG_BADGE06_GET))
+        levelCap = 42;
+    else if (FlagGet(FLAG_BADGE05_GET))
+        levelCap = 33;
+    else if (FlagGet(FLAG_BADGE04_GET))
+        levelCap = 31;
+    else if (FlagGet(FLAG_BADGE03_GET))
+        levelCap = 29;
+    else if (FlagGet(FLAG_BADGE02_GET))
+        levelCap = 24;
+    else if (FlagGet(FLAG_BADGE01_GET))
+        levelCap = 19;
+    else levelCap = 15;
+
+    while (level <= MAX_LEVEL && gExperienceTables[gSpeciesInfo[species].growthRate][level] <= exp && level <= levelCap)
         level++;
 
     return level - 1;
