@@ -1389,6 +1389,8 @@ const s8 gNatureStatTable[NUM_NATURES][NUM_NATURE_STATS] =
     [NATURE_SASSY]   = {    0,      0,     -1,      0,     +1   },
     [NATURE_CAREFUL] = {    0,      0,      0,     -1,     +1   },
     [NATURE_QUIRKY]  = {    0,      0,      0,      0,      0   },
+    [NATURE_LUCKY]   = {    1,      1,      1,      1,      1   },
+    [NATURE_UNLUCKY] = {   -1,     -1,     -1,     -1,     -1   },
 };
 
 #include "data/pokemon/tmhm_learnsets.h"

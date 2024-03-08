@@ -372,8 +372,19 @@ static u8 PickWildMonNature(void)
         return GetMonData(&gPlayerParty[0], MON_DATA_PERSONALITY) % NUM_NATURES;
     }
 
+    i = Random() % 100;
+
+    if (i == 7 || i == 77)
+    {
+        return NATURE_LUCKY;
+    }
+    if (i == 13 || i == 9)
+    {
+        return NATURE_UNLUCKY;
+    }
+
     // random nature
-    return Random() % NUM_NATURES;
+    return Random() % NUM_NATURES - 2;
 }
 
 static void CreateWildMon(u16 species, u8 level)

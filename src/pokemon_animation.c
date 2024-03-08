@@ -841,6 +841,8 @@ static const u8 sBackAnimNatureModTable[NUM_NATURES] =
     [NATURE_SASSY]   = 1,
     [NATURE_CAREFUL] = 2,
     [NATURE_QUIRKY]  = 1,
+    [NATURE_LUCKY]   = 0,
+    [NATURE_UNLUCKY] = 2,
 };
 
 static const union AffineAnimCmd sMonAffineAnim_0[] =

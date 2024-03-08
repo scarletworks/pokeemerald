@@ -168,6 +168,8 @@ static const u8 sNatureToMonPokeblockAnim[NUM_NATURES][2] =
     [NATURE_SASSY]   = { ANIM_SASSY,   AFFINE_TURN_UP_HIGH },
     [NATURE_CAREFUL] = { ANIM_CAREFUL, AFFINE_NONE },
     [NATURE_QUIRKY]  = { ANIM_QUIRKY,  AFFINE_NONE },
+    [NATURE_LUCKY]   = { ANIM_QUIRKY,  AFFINE_NONE },
+    [NATURE_UNLUCKY] = { ANIM_QUIRKY,  AFFINE_NONE },
 };
 
 // Data for the animation the Pokémon does while readying to jump for the Pokéblock
