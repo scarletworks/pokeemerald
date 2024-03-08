@@ -69,7 +69,9 @@
 #define NATURE_SASSY    22
 #define NATURE_CAREFUL  23
 #define NATURE_QUIRKY   24
-#define NUM_NATURES     25
+#define NATURE_LUCKY    25
+#define NATURE_UNLUCKY  26
+#define NUM_NATURES     27
 
 // Pokémon Stats
 #define STAT_HP      0

@@ -880,7 +880,9 @@ const ALIGNED(4) u8 gBattlePalaceNatureToMoveGroupLikelihood[NUM_NATURES][4] =
     [NATURE_GENTLE]  = PALACE_STYLE(18, 70, 90,  5), // 12%,  5%
     [NATURE_SASSY]   = PALACE_STYLE(88,  6, 22, 20), //  6%, 58%
     [NATURE_CAREFUL] = PALACE_STYLE(42, 50, 42,  5), //  8%, 53%
-    [NATURE_QUIRKY]  = PALACE_STYLE(56, 22, 56, 22)  // 22%, 22%
+    [NATURE_QUIRKY]  = PALACE_STYLE(56, 22, 56, 22), // 22%, 22%
+    [NATURE_LUCKY]   = PALACE_STYLE(56, 22, 56, 22), // 22%, 22%
+    [NATURE_UNLUCKY] = PALACE_STYLE(56, 22, 56, 22)  // 22%, 22%
 };
 
 static const u8 sBattlePalaceNatureToFlavorTextId[NUM_NATURES] =
@@ -910,6 +912,8 @@ static const u8 sBattlePalaceNatureToFlavorTextId[NUM_NATURES] =
     [NATURE_SASSY]   = B_MSG_GROWL_DEEPLY,
     [NATURE_CAREFUL] = B_MSG_GROWL_DEEPLY,
     [NATURE_QUIRKY]  = B_MSG_EAGER_FOR_MORE,
+    [NATURE_LUCKY]   = B_MSG_GLINT_IN_EYE,
+    [NATURE_UNLUCKY] = B_MSG_GROWL_DEEPLY,
 };
 
 static void Cmd_attackcanceler(void)
