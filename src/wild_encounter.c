@@ -374,17 +374,13 @@ static u8 PickWildMonNature(void)
 
     i = Random() % 100;
 
-    if (i == 7 || i == 77)
-    {
+    if (i == 7)
         return NATURE_LUCKY;
-    }
-    if (i == 13 || i == 9)
-    {
+    
+    else if (i == 13)
         return NATURE_UNLUCKY;
-    }
-
-    // random nature
-    return Random() % NUM_NATURES - 2;
+    else 
+        return i % (NUM_NATURES - 2);
 }
 
 static void CreateWildMon(u16 species, u8 level)
