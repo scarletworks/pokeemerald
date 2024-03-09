@@ -2219,11 +2219,13 @@ void TryShinyAnimation(u8 battler, struct Pokemon *mon)
     u32 otId, personality;
     u32 shinyValue;
     u8 taskCirc, taskDgnl;
+    u8 nature;
 
     isShiny = FALSE;
     gBattleSpritesDataPtr->healthBoxesData[battler].triedShinyMonAnim = TRUE;
     otId = GetMonData(mon, MON_DATA_OT_ID);
     personality = GetMonData(mon, MON_DATA_PERSONALITY);
+    nature = GetNatureFromPersonality(personality);
 
     if (IsBattlerSpriteVisible(battler))
     {
@@ -2231,7 +2233,7 @@ void TryShinyAnimation(u8 battler, struct Pokemon *mon)
         if (shinyValue < SHINY_ODDS)
             isShiny = TRUE;
 
-        if (isShiny)
+        if (isShiny || nature == NATURE_LUCKY || nature == NATURE_UNLUCKY)
         {
             if (GetSpriteTileStartByTag(ANIM_TAG_GOLD_STARS) == 0xFFFF)
             {
