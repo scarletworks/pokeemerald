@@ -3293,7 +3293,7 @@ static void Cmd_getexp(void)
                     viaExpShare++;
             }
 
-            calculatedExp = 4 * gSpeciesInfo[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 7;
+            calculatedExp = 8 * gSpeciesInfo[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 7;
 
             if (viaExpShare) // at least one mon is getting exp via exp share
             {
@@ -3363,6 +3363,8 @@ static void Cmd_getexp(void)
                         gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
                     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
                         gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
+                    else 
+                        gBattleMoveDamage = 0;  // no exp for wild encounters
 
                     if (IsTradedMon(&gPlayerParty[gBattleStruct->expGetterMonId]))
                     {
