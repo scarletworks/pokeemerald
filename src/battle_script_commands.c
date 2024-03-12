@@ -3368,7 +3368,7 @@ static void Cmd_getexp(void)
                     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
                         gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
                     else 
-                        gBattleMoveDamage = 0;  // no exp for wild encounters
+                        gBattleMoveDamage = 1;  // no exp for wild encounters
 
                     if (IsTradedMon(&gPlayerParty[gBattleStruct->expGetterMonId]))
                     {
