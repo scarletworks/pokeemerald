@@ -1661,7 +1661,16 @@ static void UNUSED Unused_ApplyRandomDmgMultiplier(void)
 
 static void Cmd_adjustnormaldamage(void)
 {
-    u8 holdEffect, param;
+    u32 personality;
+    u8 holdEffect, param, nature, bandChance;
+    personality = GetMonData(mon, MON_DATA_PERSONALITY);
+    nature = GetNatureFromPersonality(personality);
+    if (nature == NATURE_LUCKY)
+        bandChance = 20;
+    else if (nature == NATURE_UNLUCKY)
+        bandChance = 1;
+    else
+        bandChance = 10;
 
     ApplyRandomDmgMultiplier();
 
@@ -1678,7 +1687,8 @@ static void Cmd_adjustnormaldamage(void)
 
     gPotentialItemEffectBattler = gBattlerTarget;
 
-    if ((Random() % 100) < 10)
+
+    if ((Random() % 100) < bandChance)
     {
         RecordItemEffectBattle(gBattlerTarget, HOLD_EFFECT_FOCUS_BAND);
         gSpecialStatuses[gBattlerTarget].focusBanded = 1;
@@ -1704,7 +1714,17 @@ static void Cmd_adjustnormaldamage(void)
 // The same as adjustnormaldamage except it doesn't check for false swipe move effect.
 static void Cmd_adjustnormaldamage2(void)
 {
-    u8 holdEffect, param;
+    u32 personality;
+    u8 holdEffect, param, nature, bandChance;
+
+    personality = GetMonData(mon, MON_DATA_PERSONALITY);
+    nature = GetNatureFromPersonality(personality);
+    if (nature == NATURE_LUCKY)
+        bandChance = 20;
+    else if (nature == NATURE_UNLUCKY)
+        bandChance = 1;
+    else
+        bandChance = 10;
 
     ApplyRandomDmgMultiplier();
 
@@ -1721,7 +1741,7 @@ static void Cmd_adjustnormaldamage2(void)
 
     gPotentialItemEffectBattler = gBattlerTarget;
 
-    if ((Random() % 100) < 10)
+    if ((Random() % 100) < bandChance)
     {
         RecordItemEffectBattle(gBattlerTarget, HOLD_EFFECT_FOCUS_BAND);
         gSpecialStatuses[gBattlerTarget].focusBanded = 1;
@@ -5855,7 +5875,17 @@ static void Cmd_cancelallactions(void)
 // The same as adjustnormaldamage, except there's no random damage multiplier.
 static void Cmd_adjustsetdamage(void)
 {
-    u8 holdEffect, param;
+    u32 personality;
+    u8 holdEffect, param, nature, bandChance;
+
+    personality = GetMonData(mon, MON_DATA_PERSONALITY);
+    nature = GetNatureFromPersonality(personality);
+    if (nature == NATURE_LUCKY)
+        bandChance = 20;
+    else if (nature == NATURE_UNLUCKY)
+        bandChance = 1;
+    else
+        bandChance = 10;
 
     if (gBattleMons[gBattlerTarget].item == ITEM_ENIGMA_BERRY)
     {
@@ -5870,7 +5900,7 @@ static void Cmd_adjustsetdamage(void)
 
     gPotentialItemEffectBattler = gBattlerTarget;
 
-    if ((Random() % 100) < 10)
+    if ((Random() % 100) < bandChance)
     {
         RecordItemEffectBattle(gBattlerTarget, HOLD_EFFECT_FOCUS_BAND);
         gSpecialStatuses[gBattlerTarget].focusBanded = 1;
@@ -7438,7 +7468,17 @@ static void Cmd_setlightscreen(void)
 
 static void Cmd_tryKO(void)
 {
-    u8 holdEffect, param;
+    u32 personality;
+    u8 holdEffect, param, nature, bandChance;
+
+    personality = GetMonData(mon, MON_DATA_PERSONALITY);
+    nature = GetNatureFromPersonality(personality);
+    if (nature == NATURE_LUCKY)
+        bandChance = 20;
+    else if (nature == NATURE_UNLUCKY)
+        bandChance = 1;
+    else
+        bandChance = 10;
 
     if (gBattleMons[gBattlerTarget].item == ITEM_ENIGMA_BERRY)
     {
@@ -7453,7 +7493,7 @@ static void Cmd_tryKO(void)
 
     gPotentialItemEffectBattler = gBattlerTarget;
 
-    if ((Random() % 100) < 10)
+    if ((Random() % 100) < bandChance)
     {
         RecordItemEffectBattle(gBattlerTarget, HOLD_EFFECT_FOCUS_BAND);
         gSpecialStatuses[gBattlerTarget].focusBanded = 1;
